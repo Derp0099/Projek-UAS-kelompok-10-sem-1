@@ -1,20 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav>
-      <div class="dropdown">
-        <a href="index.html">HOME</a>
-        <a href="footwear.html">FOOTWEAR </a>
-        <a href="about.html">ABOUT US </a>       
-         <a href="contact.html"> CONTACT & SUPPORT</a>
-        <a href="basket.html"> <i class="ri-shopping-cart-2-line"></i> </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneakers & Streetwear Store</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html" style="font-size: 25px"
+            ><b>Motix</b></a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle d-flex align-items-center gap-1"
+                  href="footwear.html"
+                  id="navbarDropdown"
+                >
+                  Footwear
+                  <i class="ri-arrow-down-s-line dropdown-icon"></i>
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item" href="sepatu.html">Sepatu</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="sandal.html">Sandal</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="location.html">Location</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About us</a>
+              </li>
+            </ul>
+            <div class="d-flex align-items-center me-4">
+              <a href="basket.html" class="text-white fs-4 position-relative">
+                <i class="ri-shopping-bag-line"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <main>
+      <div class="container my-5">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100">
+              <img
+                src="images/jakob-owens-WzncgWs3RJ4-unsplash.jpg"
+                class="card-img-top"
+                alt=""
+              />
+              <div class="card-body">
+                <h5 class="card-title">Arizona</h5>
+                <p class="card-text">
+                  <Small>
+                    Sandal stylish dengan desain modern yang nyaman dipakai
+                    sepanjang hari. Cocok untuk tampilan kasual maupun santai
+                    di berbagai kesempatan.
+                  </Small>
+                </p>
+                <a href="sandal1.html" class="btn btn-secondary">Detail Produk</a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-4">
+            <div class="card h-100">
+              <img
+                src="images/kushagrta-roy--JM9hYDw8iY-unsplash.jpg"
+                class="card-img-top"
+                alt=""
+              />
+              <div class="card-body">
+                <h5 class="card-title">Sandal Kulit</h5>
+                <p class="card-text"><small>
+                  Sandal kulit premium yang menggabungkan kenyamanan dan
+                  gaya. Desain elegan dengan bahan berkualitas tinggi, cocok
+                  untuk berbagai acara.
+                </small></p>
+                <a href="sandal2.html" class="btn btn-secondary">Detail Produk</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </nav>
-</body>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 mb-4">
+            <h5 class="footer-logo">Motix</h5>
+            <p class="footer-text">
+              Sneakers & streetwear original untuk gaya urban modern.
+            </p>
+          </div>
+
+          <div class="col-md-3 mb-4">
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#">Footwear</a></li>
+              <li><a href="location.html">Location</a></li>
+              <li><a href="about.html">About Us</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 mb-4">
+            <h6 class="footer-title">Categories</h6>
+            <ul class="footer-links">
+              <li><a href="sepatu.html">Sepatu</a></li>
+              <li><a href="sandal.html">Sandal</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 mb-4">
+            <h6 class="footer-title">Contact</h6>
+            <p>
+              📍 Jl. Kebagusan Raya, Gg. Langgar 3 No.6 RT 007/03 Jagakarsa,
+              Jakarta Selatan, DKI Jakarta 12620
+            </p>
+            <p>📞 +62 851-7964-3571</p>
+            <p>✉️ info@motix.id</p>
+
+            <div class="footer-social">
+              <a href="https://www.instagram.com/nr.ikhlas.zy/"
+                ><i class="ri-instagram-line"></i
+              ></a>
+              <a href="#"><i class="ri-tiktok-line"></i></a>
+              <a href="#"><i class="ri-facebook-line"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="text-center footer-bottom">
+          © 2026 Motix. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      class="img-custom"
+    ></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>

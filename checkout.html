@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout - Motix</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .checkout-table th,
+    .checkout-table td {
+      text-align: center;
+      vertical-align: middle;
+    }
+    .qty-btn {
+      width: 30px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <main class="flex-fill">
+    <div class="container py-5">
+      <h2 class="fw-bold mb-4">Checkout</h2>
+
+      <!-- Tabel Produk -->
+      <div class="card p-4 shadow-sm mb-4">
+        <table class="table table-bordered checkout-table">
+          <thead class="table-light">
+            <tr>
+              <th>Nama Produk</th>
+              <th>Ukuran</th>
+              <th>Jumlah</th>
+              <th>Harga</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="checkoutBody">
+            <!-- Data diisi oleh JS -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="4" class="text-end">Total</th>
+              <th id="totalPrice">Rp 0</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Form Checkout -->
+      <form id="checkoutForm" class="card p-4 shadow-sm">
+        <div class="mb-3">
+          <label class="form-label">Nama Lengkap</label>
+          <input type="text" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Alamat</label>
+          <textarea class="form-control" rows="3" required></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Metode Pembayaran</label>
+          <select class="form-select" required>
+            <option value="">-- Pilih --</option>
+            <option>Transfer Bank</option>
+            <option>E-Wallet</option>
+            <option>COD</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">
+          Konfirmasi Pesanan
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // Render cart dari localStorage
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const tbody = document.getElementById("checkoutBody");
+      tbody.innerHTML = "";
+
+      cart.forEach((item) => {
+        const subtotal = item.price * item.quantity;
+        const tr = document.createElement("tr");
+        tr.dataset.price = item.price;
+
+        tr.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.size}</td>
+          <td>
+            <button class="qty-btn minus">−</button>
+            <span class="qty">${item.quantity}</span>
+            <button class="qty-btn plus">+</button>
+          </td>
+          <td>Rp ${item.price.toLocaleString("id-ID")}</td>
+          <td class="subtotal">Rp ${subtotal.toLocaleString("id-ID")}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      updateTotal();
+    }
+
+    // Update total harga
+    function updateTotal() {
+      let total = 0;
+      document.querySelectorAll(".subtotal").forEach((el) => {
+        total += parseInt(el.textContent.replace(/\D/g, ""));
+      });
+      document.getElementById("totalPrice").textContent =
+        "Rp " + total.toLocaleString("id-ID");
+    }
+
+    // Handle tombol + / - quantity di checkout
+    document.addEventListener("click", function (e) {
+      const row = e.target.closest("tr");
+      if (!row) return;
+
+      const price = parseInt(row.dataset.price);
+      const qtyEl = row.querySelector(".qty");
+      let qty = parseInt(qtyEl.textContent);
+
+      if (e.target.classList.contains("plus")) qty++;
+      if (e.target.classList.contains("minus") && qty > 1) qty--;
+
+      if (
+        e.target.classList.contains("plus") ||
+        e.target.classList.contains("minus")
+      ) {
+        qtyEl.textContent = qty;
+        row.querySelector(".subtotal").textContent =
+          "Rp " + (price * qty).toLocaleString("id-ID");
+
+        updateTotal();
+        updateCartStorage();
+      }
+    });
+
+    // Update localStorage saat quantity diubah di checkout
+    function updateCartStorage() {
+      const cart = [];
+      document.querySelectorAll("#checkoutBody tr").forEach((row) => {
+        const name = row.children[0].textContent;
+        const size = row.children[1].textContent;
+        const quantity = parseInt(row.querySelector(".qty").textContent);
+        const price = parseInt(row.dataset.price);
+
+        cart.push({ name, size, quantity, price });
+      });
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    // Render saat halaman load
+    document.addEventListener("DOMContentLoaded", renderCart);
+  </script>
+</body>
+</html>

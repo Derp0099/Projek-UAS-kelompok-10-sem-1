@@ -1,0 +1,196 @@
+/* ===================== ROOT ===================== */
+:root {
+  --bg-light: #faf7f0;
+  --bg-dark: #121212;
+
+  --text-light: #212529;
+  --text-dark: #f5f5f5;
+
+  --primary: #303841;
+  --accent: #f6c90e;
+
+  --card-light: #ffffff;
+  --card-dark: #1e1e1e;
+}
+
+/* ===================== BODY ===================== */
+body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-light);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* ===================== NAVBAR ===================== */
+.navbar-custom {
+  background-color: var(--primary) !important;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  margin: 15px 20px;
+  position: relative;
+}
+
+.navbar .nav-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover::before {
+  width: 100%;
+}
+
+.navbar .nav-link:focus,
+.navbar .nav-link:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ===================== DROPDOWN ===================== */
+.dropdown-menu {
+  background: #fff;
+  border-radius: 14px;
+  padding: 8px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  animation: fadeDown 0.25s ease;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  color: #212529;
+}
+
+.dropdown-item:hover,
+.dropdown-item.active {
+  background: #f1f3f5;
+}
+
+/* dark dropdown */
+body.dark-mode .dropdown-menu {
+  background: #1e1e1e;
+}
+
+body.dark-mode .dropdown-item {
+  color: #f5f5f5;
+}
+
+body.dark-mode .dropdown-item:hover {
+  background: #2a2a2a;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== CAROUSEL ===================== */
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===================== CARD ===================== */
+.card {
+  border: none;
+  border-radius: 14px;
+  background: var(--card-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* dark card */
+body.dark-mode .card {
+  background: var(--card-dark);
+  color: var(--text-dark);
+}
+
+/* ===================== FOOTER ===================== */
+.footer {
+  background: #2f3640;
+  color: #dcdde1;
+  padding: 60px 0 20px;
+}
+
+.footer a {
+  color: #dcdde1;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--accent);
+}
+
+/* ===================== MAIN OFFSET ===================== */
+main {
+  padding-top: 80px;
+}
+
+/* ===================== BUTTON ===================== */
+.btn-outline-secondary:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* ===================== CHECKOUT ===================== */
+.checkout-wrapper {
+  max-width: 1100px;
+  margin: 40px auto 120px;
+  padding: 0 20px;
+}
+
+.checkout-table {
+  width: 100%;
+  background: var(--card-light);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* dark checkout */
+body.dark-mode .checkout-table {
+  background: var(--card-dark);
+  color: var(--text-dark);
+}
+
+/* ===================== FLOATING THEME BUTTON ===================== */
+#themeToggle {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: 22px;
+  background: #000;
+  color: #fff;
+  border: none;
+}
+
+body.dark-mode #themeToggle {
+  background: #fff;
+  color: #000;
+}
